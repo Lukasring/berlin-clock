@@ -14,7 +14,7 @@ function getBerlinString(time, dec) {
 }
 
 function formatString(string, length) {
-    return string.padEnd(length, ".").slice(0, length);
+    return string.padEnd(length, ".");
 }
 
 function formatFiveMinuteString(string) {
