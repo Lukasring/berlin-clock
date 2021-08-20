@@ -5,12 +5,11 @@ require("readline")
 // const testCases = ["00:00:00", "00:00:01", "10:10:10", "22:23:18"];
 
 function getBerlinSeconds(seconds) {
-    if (+seconds === 0) return ".";
     return +seconds % 2 === 0 ? "." : "X";
 }
 
 function getBerlinHours(hours) {
-    let currHour = +hours;
+    const currHour = +hours;
     const onesArr = Array.from(Array(4).keys()).map((_) => _ + 1);
     const fiveArr = Array.from(Array(4).keys()).map((_) => (_ + 1) * 5);
     const fiveHourArr = fiveArr.map((hour) => {
@@ -22,7 +21,7 @@ function getBerlinHours(hours) {
     });
     // const fiveHourString = fiveBerlinHours(+hours);
     const oneHourArr = onesArr.map((hour) => {
-        if (currHour < hour) {
+        if (currHour - hour * 5 < hour) {
             return ".";
         }
         // currHour -= 1;
