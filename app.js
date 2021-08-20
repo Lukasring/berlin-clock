@@ -29,43 +29,44 @@ function getXDotArray(length, time, dec) {
 
 function getBerlinHours(hours) {
     let currHour = +hours;
-    const arr = ["", "", "", ""];
-    const fiveHourArr = arr.map((_, ind) => {
-        if (currHour < 5) {
+    const onesArr = Array.from(Array(4).keys()).map((_) => _ + 21);
+    const fiveArr = Array.from(Array(4).keys()).map((_) => (_ + 1) * 5);
+    const fiveHourArr = fiveArr.map((hour) => {
+        if (currHour < hour) {
             return ".";
         }
-        currHour -= 5;
+        // currHour -= 5;
         return "X";
     });
-    const fiveHourString = fiveBerlinHours(+hours);
-    const oneHourArr = arr.map(() => {
-        if (currHour < 1) {
+    // const fiveHourString = fiveBerlinHours(+hours);
+    const oneHourArr = onesArr.map((hour) => {
+        if (currHour < hour) {
             return ".";
         }
-        currHour -= 1;
+        // currHour -= 1;
         return "X";
     });
-    return `${fiveHourString} ${oneHourArr.join("")}`;
+    return `${fiveHourArr.join("")} ${oneHourArr.join("")}`;
 }
 
 function getBerlinMinutes(minutes) {
     let currMinute = +minutes;
-    const fivesArr = Array.from(Array(11).keys());
-    const onesArr = ["", "", "", ""];
+    const fiveArr = Array.from(Array(11).keys()).map((_) => (_ + 1) * 5);
+    const onesArr = Array.from(Array(4).keys()).map((_) => _ + 61);
 
-    const fiveMinuteArr = fivesArr.map((_, index) => {
+    const fiveMinuteArr = fiveArr.map((minute, index) => {
         const numb = index + 1;
-        if (currMinute < 5) {
+        if (currMinute < minute) {
             return ".";
         }
-        currMinute -= 5;
+        // currMinute -= 5;
         return numb % 3 === 0 ? "|" : "X";
     });
-    const oneMinuteArr = onesArr.map(() => {
-        if (currMinute < 1) {
+    const oneMinuteArr = onesArr.map((minute) => {
+        if (currMinute < minute) {
             return ".";
         }
-        currMinute -= 1;
+        // currMinute -= 1;
         return "X";
     });
 
