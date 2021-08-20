@@ -33,7 +33,7 @@ function getBerlinHours(hours) {
 function getBerlinMinutes(minutes) {
     let currMinute = +minutes;
     const fiveArr = Array.from(Array(11).keys()).map((_) => (_ + 1) * 5);
-    const onesArr = Array.from(Array(4).keys()).map((_) => _ + 56);
+    const onesArr = Array.from(Array(4).keys()).map((_) => _ + 1);
 
     const fiveMinuteArr = fiveArr.map((minute, index) => {
         const numb = index + 1;
