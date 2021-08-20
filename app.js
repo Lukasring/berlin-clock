@@ -9,24 +9,6 @@ function getBerlinSeconds(seconds) {
     return +seconds % 2 === 0 ? "." : "X";
 }
 
-function getXDotArray(length, time, dec) {
-    let currTime = +time;
-    return Array.from(Array(length).keys()).map(() => {
-        if (currTime < dec) {
-            return ".";
-        }
-        currTime -= dec;
-        return "X";
-    });
-}
-
-// function fiveBerlinHours(hour) {
-//     if (hour < 5) {
-//         return ".";
-//     }
-//     return "X" + fiveBerlinHours(hour - 5);
-// }
-
 function getBerlinHours(hours) {
     let currHour = +hours;
     const onesArr = Array.from(Array(4).keys()).map((_) => _ + 1);
