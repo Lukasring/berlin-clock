@@ -1,8 +1,8 @@
-// require("readline")
-//     .createInterface({ input: process.stdin })
-//     .on("line", (line) => console.log(line + " => " + toBerlinClock(line)));
+require("readline")
+    .createInterface({ input: process.stdin })
+    .on("line", (line) => console.log(line + " => " + toBerlinClock(line)));
 
-const testCases = ["00:00:00", "00:00:01", "10:10:10", "22:23:18"];
+// const testCases = ["00:00:00", "00:00:01", "10:10:10", "22:23:18"];
 
 function getBerlinSeconds(seconds) {
     if (+seconds === 0) return ".";
@@ -29,7 +29,7 @@ function getXDotArray(length, time, dec) {
 
 function getBerlinHours(hours) {
     let currHour = +hours;
-    const onesArr = Array.from(Array(4).keys()).map((_) => _ + 21);
+    const onesArr = Array.from(Array(4).keys()).map((_) => _ + 1);
     const fiveArr = Array.from(Array(4).keys()).map((_) => (_ + 1) * 5);
     const fiveHourArr = fiveArr.map((hour) => {
         if (currHour < hour) {
@@ -52,7 +52,7 @@ function getBerlinHours(hours) {
 function getBerlinMinutes(minutes) {
     let currMinute = +minutes;
     const fiveArr = Array.from(Array(11).keys()).map((_) => (_ + 1) * 5);
-    const onesArr = Array.from(Array(4).keys()).map((_) => _ + 61);
+    const onesArr = Array.from(Array(4).keys()).map((_) => _ + 56);
 
     const fiveMinuteArr = fiveArr.map((minute, index) => {
         const numb = index + 1;
@@ -78,12 +78,12 @@ function toBerlinClock(line) {
     return `${getBerlinSeconds(seconds)} ${getBerlinHours(
         hours
     )} ${getBerlinMinutes(minutes)}`;
-    return ". .... .... ........... ....";
+    // return ". .... .... ........... ....";
 }
 
-function runTests() {
-    // console.log(getBerlinHours("10"));
-    testCases.forEach((time) => console.log(toBerlinClock(time)));
-}
+// function runTests() {
+//     // console.log(getBerlinHours("10"));
+//     testCases.forEach((time) => console.log(toBerlinClock(time)));
+// }
 
-runTests();
+// runTests();
