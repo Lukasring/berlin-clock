@@ -18,13 +18,7 @@ function formatString(string, length) {
 }
 
 function formatFiveMinuteString(string) {
-    return formatString(
-        string
-            .split("")
-            .map((char, i) => ((i + 1) % 3 === 0 ? "|" : char))
-            .join(""),
-        11
-    );
+    return formatString(string.replace(/(..)./g, "$1|"), 11);
 }
 
 function getBerlinHours(hours) {
