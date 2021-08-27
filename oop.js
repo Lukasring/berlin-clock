@@ -1,3 +1,12 @@
+require("readline")
+    .createInterface({ input: process.stdin })
+    .on("line", (line) => console.log(line + " => " + toBerlinClock(line)));
+
+function toBerlinClock(line) {
+    const berlinClock = new BerlinClock(line);
+    return berlinClock.toString();
+}
+
 Number.prototype.mod = function (number) {
     return this % number;
 };
@@ -6,7 +15,7 @@ Number.prototype.divide = function (number) {
     return this / number;
 };
 Number.prototype.isEqual = function (number) {
-    return this === number;
+    return +this === number;
 };
 
 Number.prototype.isEven = function () {
@@ -39,6 +48,7 @@ class BerlinClock extends Clock {
     }
 
     getEven() {
+        // console.log(this.seconds.isEven());
         return this.seconds.isEven() ? this.offString : this.onString;
     }
 
@@ -98,6 +108,6 @@ BerlinClock.prototype.toString = function () {
     return this.getBerlinTime();
 };
 
-const berlinClock = new BerlinClock("11:12:43");
-console.log(berlinClock);
-console.log(berlinClock.toString());
+// console.log(berlinClock);
+// console.log(berlinClock.toString());
+// console.log(toBerlinClock("00:00:01"));
