@@ -1,6 +1,6 @@
-require("readline")
-    .createInterface({ input: process.stdin })
-    .on("line", (line) => console.log(line + " => " + toBerlinClock(line)));
+// require("readline")
+//     .createInterface({ input: process.stdin })
+//     .on("line", (line) => console.log(line + " => " + toBerlinClock(line)));
 
 function toBerlinClock(line) {
     const berlinClock = new BerlinClock(line);
@@ -71,23 +71,16 @@ class BerlinClock extends Clock {
             this.getOnOnes(this.hours).padEnd(4, this.offString)
         );
     }
+
+    getFivesMinutes() {
+        return this.getOnFives(this.minutes).replace(/(..)./g, "$1|");
+    }
+
     getBerlinMinutes() {
         return (
-            this.getOnFives(this.minutes).padEnd(4, this.offString) +
+            this.getFivesMinutes().padEnd(11, this.offString) +
             " " +
             this.getOnOnes(this.minutes).padEnd(4, this.offString)
-        );
-    }
-
-    getFivesSeconds() {
-        return this.getOnFives(this.seconds).replace(/(..)./g, "$1|");
-    }
-
-    getBerlinSeconds() {
-        return (
-            this.getFivesSeconds().padEnd(11, this.offString) +
-            " " +
-            this.getOnOnes(this.seconds).padEnd(4, this.offString)
         );
     }
 
@@ -97,9 +90,7 @@ class BerlinClock extends Clock {
             " " +
             this.getBerlinHours() +
             " " +
-            this.getBerlinMinutes() +
-            " " +
-            this.getBerlinSeconds()
+            this.getBerlinMinutes()
         );
     }
 }
@@ -110,4 +101,4 @@ BerlinClock.prototype.toString = function () {
 
 // console.log(berlinClock);
 // console.log(berlinClock.toString());
-// console.log(toBerlinClock("00:00:01"));
+// console.log(toBerlinClock("01:58:57"));
