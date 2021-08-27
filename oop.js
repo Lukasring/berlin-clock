@@ -24,6 +24,10 @@ class Clock {
         this.minutes = +minutes;
         this.seconds = +seconds;
     }
+
+    setTime(time) {
+        this.splitTime(time);
+    }
 }
 
 class BerlinClock extends Clock {
@@ -95,4 +99,5 @@ BerlinClock.prototype.toString = function () {
 };
 
 const berlinClock = new BerlinClock("11:12:43");
+console.log(berlinClock);
 console.log(berlinClock.toString());
